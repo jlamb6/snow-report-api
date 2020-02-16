@@ -9,6 +9,7 @@ const app = express();
 const PORT = 5000;
 const uri = process.env.MONGO_URI;
 const snowReportApi = require('./api/snow-report');
+const weatherApi = require('./api/weather')
 
 mongoose.connect(uri, {useNewUrlParser: true, useFindAndModify: false });
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api/snow-report", snowReportApi);
+app.use("/api/weather", weatherApi);
 
 app.listen(PORT, () => {
   console.log(`Running on port ${PORT}`);
