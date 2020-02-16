@@ -20,7 +20,7 @@ router.get("/:resort", cors(), async function (req, res) {
     res.json({err: `The resort, ${req.params.resort}, is not found in our system.`});
   }
   const resort = resorts[req.params.resort];
-  const url = `https://api.darksky.net/forecast/${process.env.DARKY_SKY_API_KEY}/${resort.lat},${resort.lon}`;
+  const url = `https://api.darksky.net/forecast/${process.env.DARK_SKY_API_KEY}/${resort.lat},${resort.lon}`;
   const response = await axios.get(url)
     .then(res => res.data)
     .catch(err => res.send(err));
